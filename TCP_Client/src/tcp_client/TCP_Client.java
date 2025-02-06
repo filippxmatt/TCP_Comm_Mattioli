@@ -17,6 +17,6 @@ public class TCP_Client {
         // TODO code application logic here
         Client c = new Client("Filippo");
         c.connetti("localhost", 2000);
+        c.chiudi();
     }
-    
 }

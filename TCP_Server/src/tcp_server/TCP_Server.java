@@ -15,9 +15,13 @@ public class TCP_Server {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
-        Server s = new Server(1700);
-        s.attendi();
+
+        Server s = new Server(2000);
+
+        while() {
+            s.attendi();
+            s.chiudi();
+        }
+        s.termina();
     }
-    
 }

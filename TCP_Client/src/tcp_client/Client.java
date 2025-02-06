@@ -25,15 +25,14 @@ public class Client {
         
     }
     
-    public void connetti(String S, int 1700){
+    public void connetti(String S, int portaServer){
         try {
-            socket = new Socket(S, 1700);
+            socket = new Socket(S, 2000);
             System.out.println("Connessione al server avvenuta");
         } catch (IOException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
     }
     public void leggi() {
     }
@@ -42,12 +41,15 @@ public class Client {
     }
 
     public void chiudi() {
-        try {
-            socket.close();
-            System.out.println("4) chiusura comunicazione con server");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if (socket!=null) {
+            try {
+                socket.close();
+                System.out.println("Chiusura socket avvenuta");
+            } catch (IOException e) {
+                System.err.println("Errore nella chiusura con il client");
+            }
+        } else {
+            System.out.println("Il Socket non è stato istanziato");
         }
     }
     }
-}

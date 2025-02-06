@@ -58,10 +58,23 @@ public class Server {
        public void chiudi(){
            try {
                clientSocket.close();
-               System.out.println("5) chiusura comunicazione con server");
+               System.out.println("Chiusura socket con client avvenuta");
            } catch (IOException e) {
-               throw new RuntimeException(e);
+               System.err.println("Errore nella chiusura con il server");
            }
+       }
+
+       public void termina(){
+        if (serverSocket!=null) {
+            try {
+                serverSocket.close();
+                System.out.println("Chiusura socket server avvenuta");
+            } catch (IOException e) {
+                System.err.println("Il socket server non può terminarsi");
+            }
+        } else{
+            System.out.println("Non terminabile perché non istanziato");
+        }
        }
     }
 
