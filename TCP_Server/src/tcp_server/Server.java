@@ -4,7 +4,10 @@
  */
 package tcp_server;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,16 +31,16 @@ public class Server {
             System.out.println("Il server è in ascolto");
         } catch(BindException ex){
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
-            System.err.println("Un server è già in esecuzione sulla porta");
+            System.err.println("Errore: Un server è già in esecuzione sulla porta");
         } catch (IOException ex) {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Errore del server, nella fase di ascolto");
         } catch(SecurityException ex){
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
-            System.err.println("Non si ha il permesso ad accedere a serversocket");
+            System.err.println("Errore: Non si ha il permesso ad accedere a serversocket");
         } catch(IllegalArgumentException ex){
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
-            System.err.println("Il metodo ha ricevuto un parametro non valido");
+            System.err.println("Errore: Il metodo ha ricevuto un parametro non valido");
         }
     }
         
@@ -47,22 +50,38 @@ public class Server {
             System.out.println("Data Socket creato, connessione avvenuta");
         } catch (IOException ex) {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
-            System.err.println("Problemi di connessione con il client");
+            System.err.println("Errore: Problemi di connessione con il client");
         } catch(SecurityException ex){
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
-            System.err.println("non si ha il permesso per accedere a socket");
+            System.err.println("Errore: Non si ha il permesso per accedere a socket");
         } /*catch(UnknownHostException ex){
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
             System.err.println("IP host non individuabile");
         }*/catch(IllegalArgumentException ex){
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
-            System.err.println("Il metodo ha ricevuto un parametro non valido");
+            System.err.println("Errore: Il metodo ha ricevuto un parametro non valido");
         }
 
 
            return clientSocket;
            
-       } 
+       }
+
+       public void leggi(){
+        InputStream i;
+        BufferedReader br;
+        String mess;
+          try {
+            i=clientSocket.getInputStream();
+            br=new BufferedReader(new InputStreamReader(i));
+            mess=br.readLine();
+            System.out.println("Ricevuto il messaggio: "+mess);
+          } catch(IOException ex){
+            Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
+            System.err.println("Errore: Messaggio non ricevuto");
+          }
+
+       }
         
        public void invia(){
            
@@ -70,7 +89,7 @@ public class Server {
        }
        
        public void ricevi(){
-           
+
        }
        
        public void chiudi(){
@@ -81,7 +100,7 @@ public class Server {
                System.err.println("Errore nella chiusura con il server");
            } catch(SecurityException e){
                Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, e);
-               System.err.println("non si ha il permesso per accedere a chiudi");
+               System.err.println("Errore: Non si ha il permesso per accedere a chiudi");
            }
        }
 
@@ -96,7 +115,7 @@ public class Server {
                 System.err.println("");
             }*/catch(SecurityException e){
                 Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, e);
-                System.err.println("non si ha il permesso per accedere a termina");
+                System.err.println("Errore: Non si ha il permesso per accedere a termina");
             }
         } else{
             System.out.println("Non terminabile perché non istanziato");

@@ -31,7 +31,7 @@ public class TCP_Server {
         } catch (IOException e) {
             System.err.println("Errore inserimento numero client");
         } catch(IllegalArgumentException e){
-            System.err.println("Inserimento valore non valido");
+            System.err.println("Errore: Inserito valore non valido");
         }
 
         Server s = new Server(2000);
@@ -39,6 +39,7 @@ public class TCP_Server {
         while(i<numero) {
             s.attendi();
             s.chiudi();
+            s.leggi();
             i++;
         }
         s.termina();
