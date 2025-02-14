@@ -6,7 +6,7 @@ package tcp_client;
 
 /**
  *
- * @author Filippo Mattioi
+ * @author Filippo Mattioli
  */
 public class TCP_Client {
 

@@ -58,7 +58,7 @@ public class  Client {
          try{
              os=socket.getOutputStream();
              bw=new BufferedWriter(new OutputStreamWriter(os));
-             bw.write(mess);
+             bw.write(mess+"\n");
              bw.flush();
          } catch (IOException ex) {
              Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);

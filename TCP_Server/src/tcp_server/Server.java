@@ -4,10 +4,7 @@
  */
 package tcp_server;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,7 +15,8 @@ import java.util.logging.Logger;
  * @author Filippo Mattioli
  */
 public class Server {
-    
+    //public static final String BLUE="\u0018";
+
     ServerSocket serverSocket;
     Socket clientSocket;
     int porta;
@@ -80,7 +78,20 @@ public class Server {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
             System.err.println("Errore: Messaggio non ricevuto");
           }
+       }
 
+       public void scrivi(){
+           OutputStream os;
+           BufferedWriter bw;
+           String mess="Risposta server";
+           try{
+               os=serverSocket.getOutputStream();
+               bw=new BufferedWriter(new OutputStreamWriter(os));
+               bw.write(mess+"\n");
+               bw.flush();
+           } catch (IOException ex) {
+               Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
+           }
        }
         
        public void invia(){
