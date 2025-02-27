@@ -13,19 +13,30 @@ import java.util.logging.Logger;
  *
  * @author Filippo Mattioli
  */
-public class  Client {
+public class Client implements Runnable{
 
     String nome;
     String colore;
     Socket socket;
+    String nomeServer;
+    int porta;
     public static final String PURPLE = "\u001B[35m";
     public static final String GREEN = "\u001B[32m";
 
 
-    public Client(String nome){
+    public Client(String nome, String nomeServer, int porta){
         this.nome = nome;
-        this.colore = colore;
+        this.nomeServer=nomeServer;
+        this.porta=porta;
 
+    }
+
+    @Override
+    public void run(){
+        connetti(nomeServer, porta);
+        scrivi();
+        leggi();
+        chiudi();
     }
 
     public void connetti(String S, int portaServer){

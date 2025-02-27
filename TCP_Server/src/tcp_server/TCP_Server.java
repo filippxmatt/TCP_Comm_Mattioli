@@ -19,10 +19,10 @@ public class TCP_Server {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        int i=0;
-        int numero=0;
+        int i = 0;
+        int numero = 0;
 
-        System.out.println("Quanti host possono formare la connessione?");
+        /*System.out.println("Quanti host possono formare la connessione?");
         BufferedReader br = new BufferedReader( new InputStreamReader(System.in));
 
         try {
@@ -32,17 +32,19 @@ public class TCP_Server {
             System.err.println("Errore inserimento numero client");
         } catch(IllegalArgumentException e){
             System.err.println("Errore: Inserito valore non valido");
-        }
+        }*/
 
         Server s = new Server(2000);
 
-        while(i<numero) {
+        //while(i<numero) {
+        while (true) {
             s.attendi();
             s.leggi();
             s.scrivi();
             s.chiudi();
-            i++;
+            //i++;
+            //}
+            //s.termina();
         }
-        s.termina();
     }
 }

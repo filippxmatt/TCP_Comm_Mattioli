@@ -15,10 +15,8 @@ public class TCP_Client {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Client c = new Client("Filippo");
-        c.connetti("localhost", 2000);
-        c.scrivi();
-        c.leggi();
-        c.chiudi();
+        Client c = new Client("Filippo", "localhost", 2000);
+        Thread t=new Thread(c);
+        t.start();
     }
 }
