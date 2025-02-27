@@ -66,17 +66,17 @@ public class Client implements Runnable{
     }
 
     public void scrivi() {
-        OutputStream os;
-        BufferedWriter bw;
-        String mess="Client attivo";
-        try{
-            os=socket.getOutputStream();
-            bw=new BufferedWriter(new OutputStreamWriter(os));
-            bw.write(mess+"\n");
-            bw.flush();
-        } catch (IOException ex) {
-            Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+        String mess;
+        BufferedReader br;
+        System.out.println("Messaggio da inserire al server: \n");
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        try {
+            mess=br.readLine();
+        } catch (IOException e) {
+            System.err.println("Errore nell'inserimento del messaggio");
         }
+
+
     }
 
     public void chiudi() {
