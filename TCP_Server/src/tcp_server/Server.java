@@ -85,7 +85,7 @@ public class Server {
            BufferedWriter bw;
            String mess="Risposta server";
            try{
-               os=serverSocket.getOutputStream();
+               os=clientSocket.getOutputStream();
                bw=new BufferedWriter(new OutputStreamWriter(os));
                bw.write(mess+"\n");
                bw.flush();
