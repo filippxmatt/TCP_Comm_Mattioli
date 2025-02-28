@@ -53,7 +53,6 @@ public class Client implements Runnable{
         InputStream i;
         BufferedReader br;
         String mess;
-
         try {
             i=socket.getInputStream();
             br=new BufferedReader(new InputStreamReader(i));
@@ -69,9 +68,10 @@ public class Client implements Runnable{
         String mess;
         BufferedReader br;
         System.out.println("Messaggio da inserire al server: \n");
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        br = new BufferedReader(new InputStreamReader(System.in));
         try {
             mess=br.readLine();
+            
         } catch (IOException e) {
             System.err.println("Errore nell'inserimento del messaggio");
         }
