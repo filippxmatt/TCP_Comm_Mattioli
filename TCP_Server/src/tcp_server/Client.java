@@ -50,7 +50,7 @@ public class  Client {
             System.out.println("Ricevuto il messaggio: "+mess);
         } catch(IOException ex){
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
-            System.err.println("Errore: Messaggio non ricevuto");
+            System.err.println(GREEN+"Errore: Messaggio non ricevuto");
         }
     }
 
@@ -74,7 +74,7 @@ public class  Client {
                 socket.close();
                 System.out.println("\n Chiusura socket avvenuta");
             } catch (IOException e) {
-                System.err.println("Errore nella chiusura con il client");
+                System.err.println(GREEN+"Errore nella chiusura con il client");
             }
         } else {
             System.out.println("Il Socket non è stato istanziato");

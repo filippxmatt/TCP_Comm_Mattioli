@@ -20,6 +20,8 @@ public class Server {
     ServerSocket serverSocket;
     Socket clientSocket;
     int porta;
+    public static final String PURPLE = "\u001B[35m";
+    public static final String GREEN = "\u001B[32m";
     
     public Server(int porta){
         
@@ -29,16 +31,16 @@ public class Server {
             System.out.println("Il server è in ascolto");
         } catch(BindException ex){
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
-            System.err.println("Errore: Un server è già in esecuzione sulla porta");
+            System.err.println(GREEN+"Errore: Un server è già in esecuzione sulla porta");
         } catch (IOException ex) {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Errore del server, nella fase di ascolto");
+            System.out.println(GREEN+"Errore del server, nella fase di ascolto");
         } catch(SecurityException ex){
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
-            System.err.println("Errore: Non si ha il permesso ad accedere a serversocket");
+            System.err.println(GREEN+"Errore: Non si ha il permesso ad accedere a serversocket");
         } catch(IllegalArgumentException ex){
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
-            System.err.println("Errore: Il metodo ha ricevuto un parametro non valido");
+            System.err.println(GREEN+"Errore: Il metodo ha ricevuto un parametro non valido");
         }
     }
         
@@ -48,16 +50,16 @@ public class Server {
             System.out.println("Data Socket creato, connessione avvenuta");
         } catch (IOException ex) {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
-            System.err.println("Errore: Problemi di connessione con il client");
+            System.err.println(GREEN+"Errore: Problemi di connessione con il client");
         } catch(SecurityException ex){
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
-            System.err.println("Errore: Non si ha il permesso per accedere a socket");
+            System.err.println(GREEN+"Errore: Non si ha il permesso per accedere a socket");
         } /*catch(UnknownHostException ex){
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
-            System.err.println("IP host non individuabile");
+            System.err.println(GREEN+"IP host non individuabile");
         }*/catch(IllegalArgumentException ex){
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
-            System.err.println("Errore: Il metodo ha ricevuto un parametro non valido");
+            System.err.println(GREEN+"Errore: Il metodo ha ricevuto un parametro non valido");
         }
 
 
@@ -76,7 +78,7 @@ public class Server {
             System.out.println("Ricevuto il messaggio: "+mess);
           } catch(IOException ex){
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
-            System.err.println("Errore: Messaggio non ricevuto");
+            System.err.println(GREEN+"Errore: Messaggio non ricevuto");
           }
        }
 
