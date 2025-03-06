@@ -19,7 +19,7 @@ public class  Client {
     String colore;
     Socket socket;
     public static final String PURPLE = "\u001B[35m";
-    public static final String GREEN = "\u001B[32m";
+    public static final String RED = "\u001B[31m";
 
 
     public Client(String nome){
@@ -34,7 +34,7 @@ public class  Client {
             System.out.println(PURPLE+"Connessione al server avvenuta");
         } catch (IOException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
-            System.err.println(GREEN+"Errore: Connessione con server non avvenuta");
+            System.err.println(RED+"Errore: Connessione con server non avvenuta");
         }
 
     }
@@ -50,7 +50,7 @@ public class  Client {
             System.out.println("Ricevuto il messaggio: "+mess);
         } catch(IOException ex){
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
-            System.err.println(GREEN+"Errore: Messaggio non ricevuto");
+            System.err.println(RED+"Errore: Messaggio non ricevuto");
         }
     }
 
@@ -74,10 +74,10 @@ public class  Client {
                 socket.close();
                 System.out.println("\n Chiusura socket avvenuta");
             } catch (IOException e) {
-                System.err.println(GREEN+"Errore nella chiusura con il client");
+                System.err.println(RED+"Errore nella chiusura con il client");
             }
         } else {
-            System.out.println("Il Socket non è stato istanziato");
+            System.out.println(RED+"Il Socket non è stato istanziato");
         }
     }
 }
